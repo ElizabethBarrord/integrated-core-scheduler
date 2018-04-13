@@ -1,0 +1,83 @@
+table {
+  margin: 0 auto;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid #d4d4d4;
+}
+
+tr:nth-child(even) {
+  background: #d4d4d4:
+}
+
+th, td {
+  padding: 10px 30px;
+}
+
+th {
+  border-bottom: 1px solid #d4d4d4;
+}
+
+
+/* HOME PAGE */
+.nav-wrapper {
+  background-color: #000000;
+}
+
+
+/* THE RESULTS ACCORDIAN */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+
+/* columns */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* FOOTER */
+
+.page-footer {
+  background-color: #000000;
+}
+
+#main {
+  padding: 100px;
+  text-align: center;
+}
+
+#possibilities_title {
+  text-align: center;
+}
+#assignments {
+  text-align: center;
+}
