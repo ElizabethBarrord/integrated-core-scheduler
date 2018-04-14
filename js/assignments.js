@@ -19,19 +19,18 @@ var section_no_prof = [];
 //////////////////////////////////////
 //****** READ IN THE CSV *******/////
 ////////////////////////////////////
-$.ajax({
-  url: 'input_data.csv',
-  dataType: 'text',
-}).done(readCSV);
 
-function readCSV(data) {
-  var allTextLines = data.split(/\r?\n|\n/);
+function readCSV(csv_data) {
+  var allTextLines = csv_data.split(/\r?\n|\n/);
+  // console.log(allTextLines);
   // headers = ["Section", "Room", "Professor"]
   var headers = allTextLines[0].split(',');
+  // console.log(headers);
   var lines = [];
   for (var i = 1; i < allTextLines.length; i++) {
     // data = ["CA_Mon115-235.Wed115-235.Tue250-410.Thu250-410.Mon830-950.Fri830-950", "1023_Mon115-235.Mon250-410.Mon425-545.Mon600-720.T…20.Fri830-950.Fri1005-1125.Fri1140-100.Fri600-720", "Dutro_AB.DA.FC.GC"]
     var data = allTextLines[i].split(',');
+    // console.log(data);
     if (data.length == headers.length) {
       var organized_data = [];
       for (var j = 0; j < headers.length; j++) {
@@ -41,6 +40,7 @@ function readCSV(data) {
         organized_data.push(headers[j] + ":" + data[j]);
       }
       lines.push(organized_data);
+      // console.log(lines);
     }
   }
   for (var a = 0; a < lines.length; a++) {
@@ -80,6 +80,22 @@ function readCSV(data) {
     // temp3 = ["AA", "AC", "BA", "BB", "BC", "CA", "CB", "CC"]
     temp3 = p_sections.split('.');
     professors.set(last_name, temp3);
+  }
+  list_rooms();
+  find_matches();
+  generate_accordian();
+  // FOR THE RESULTS ACCORDIAN
+  var acc = document.getElementsByClassName("accordion");
+  for (var i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
   }
 }
 
@@ -188,7 +204,6 @@ function assign() {
   section_no_poss = [];
   section_no_prof = [];
 
-  // console.log("assign clicked");
   $("#assignments").html('');
   var already_assigned = [];
   var i = 0;
@@ -264,16 +279,14 @@ function download_CSV() {
     newtime.push(splat[1])
   })
 
-  // console.log(newroom)
-  // console.log(newtime)
+  console.log(newroom)
+  console.log(newtime)
 
-  // console.log(zip(newkeys, newroom, newtime));
+  console.log(zip(newkeys, newroom, newtime));
 
   var newresults = zip(newkeys, newroom, newtime);
 
-  // console.log(arrayToCSV(newresults));
-
-
+  console.log(arrayToCSV(newresults));
 }
 
 
@@ -318,20 +331,19 @@ function arrayToCSV(twoDiArray) {
 //****** BEGIN *******//
 ///////////////////////
 window.onload = function() {
-  list_rooms();
-  find_matches();
-  generate_accordian();
-  // FOR THE RESULTS ACCORDIAN
-  var acc = document.getElementsByClassName("accordion");
-  for (var i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
+  // this is a function for uploading the csv
+  $("#filename").change(function(e) {
+    var ext = $("#filename").val().split(".").pop().toLowerCase();
+    if ($.inArray(ext, ["csv"]) == -1) {
+      alert('Upload CSV');
+      return false;
+    }
+    if (e.target.files != undefined) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        readCSV(e.target.result);
       }
-    });
-  }
+      reader.readAsText(e.target.files.item(0));
+    }
+  });
 };

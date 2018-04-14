@@ -24,26 +24,43 @@
       <a href="index.html" class="brand-logo">FYIC Scheduler</a>
     </div>
   </nav>
-  <div class=container>
-    <div class=row>
-      <div class="col l4 m4 s6">
-        <h4 class=center style="font-weight:normal;">Rooms</h4>
-        <div class=center id=room></div>
-      </div>
-      <div class="col l4 m4 s6">
-        <h4 class=center>Possibilities</h4>
-        <div style="" class=center id=accord></div>
-      </div>
-      <div class="col l4 m4 s6">
-        <div class=center>
-          <h4>Assignment</h4>
-          <button id=generate_assignments class=center onclick="assign()">Generate Assignments</button>
-        <button onclick="download_CSV()">Download CSV</button>
-        </div>
-        <div class=center id=assignments></div>
-      </div>
-      </row>
+  <div class=row>
+    <div class="col l4 m4 s6">
     </div>
+    <div class="col l4 m4 s6">
+      <form action="#">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Upload csv</span>
+            <input type="file" name="filename" id="filename" accept=".csv">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="filename">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col l4 m4 s6"></div>
+  </div>
+  <div class=row>
+    <div class="col l4 m4 s6">
+      <h4 class=center style="font-weight:normal;">Rooms</h4>
+      <div class=center id=room></div>
+    </div>
+    <div class="col l4 m4 s6">
+      <h4 class=center>Possibilities</h4>
+      <div style="" class=center id=accord></div>
+    </div>
+    <div class="col l4 m4 s6">
+      <div class=center>
+        <h4>Assignment</h4>
+        <button id=generate_assignments class=center onclick="assign()">Generate Assignments</button>
+        <button onclick="download_CSV()">Download CSV</button>
+      </div>
+      <div class=center id=assignments></div>
+    </div>
+    </row>
+  </div>
 </body>
 
 </html>
