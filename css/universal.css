@@ -17,6 +17,9 @@ th {
   border-bottom: 1px solid #d4d4d4;
 }
 
+h4 {
+  font-weight: normal;
+}
 
 /* HOME PAGE */
 .nav-wrapper {
@@ -80,4 +83,8 @@ th {
 }
 #assignments {
   text-align: center;
+}
+
+#generate_assignments {
+  padding:10px;
 }
