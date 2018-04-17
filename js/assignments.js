@@ -277,16 +277,16 @@ function download_CSV() {
 
     newroom.push(splat[0])
     newtime.push(splat[1])
-  })
+  });
 
-  console.log(newroom)
-  console.log(newtime)
-
-  console.log(zip(newkeys, newroom, newtime));
+  // console.log(newroom)
+  // console.log(newtime)
+  //
+  // console.log(zip(newkeys, newroom, newtime));
 
   var newresults = zip(newkeys, newroom, newtime);
 
-  console.log(arrayToCSV(newresults));
+  arrayToCSV(newresults);
 }
 
 
