@@ -260,14 +260,9 @@ function fix_professors() {
 //****** Convert data into proper 2D array *******//
 ///////////////////////////////////////////////////
 function download_CSV() {
-  assign();
-  fix_professors();
-  //console.log(assignments);
 
   var newkeys = Array.from(assignments.keys());
   var newvalues = Array.from(assignments.values());
-  // console.log(newkeys);
-  // console.log(newvalues);
 
   var newroom = []
   var newtime = []
@@ -278,11 +273,6 @@ function download_CSV() {
     newroom.push(splat[0])
     newtime.push(splat[1])
   });
-
-  // console.log(newroom)
-  // console.log(newtime)
-  //
-  // console.log(zip(newkeys, newroom, newtime));
 
   var newresults = zip(newkeys, newroom, newtime);
 
