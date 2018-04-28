@@ -11,6 +11,8 @@ var possibilities = new Map();
 var assignments = new Map();
 var filePath = "";
 
+var professor_sections = new Map();
+
 // array to push the sections that do have possibilities
 var section_no_poss = [];
 // array to push the sections that have professor conflicts
@@ -74,14 +76,17 @@ function readCSV(csv_data) {
     rooms.set(room, temp2);
     // parse professor availability in column[2]
     // last name = Alexander:
-    var last_name = prof_avail.substr(prof_avail.indexOf(":") + 1, 4);
+    var last_name_start = prof_avail.indexOf(":")+1;
+    var last_name_end = prof_avail.indexOf("_");
+    var last_name_full = prof_avail.substring(last_name_start,last_name_end);
     var p_sections = prof_avail.substr(prof_avail.indexOf("_") + 1, prof_avail.length);
     var temp3 = [];
     // temp3 = ["AA", "AC", "BA", "BB", "BC", "CA", "CB", "CC"]
     temp3 = p_sections.split('.');
-    professors.set(last_name, temp3);
+    professors.set(last_name_full, temp3);
   }
   list_rooms();
+  list_professors();
   find_matches();
   generate_accordian();
   // FOR THE RESULTS ACCORDIAN
@@ -143,6 +148,43 @@ function list_rooms() {
   output += "</ul>";
   $("#room").append(output);
 }
+
+//////////////////////////////////////////
+//** LIST Professors FOR REFERENCE ****//
+////////////////////////////////////////
+// this is a function that writes the room into the html
+function list_professors() {
+  var professors_names = [];
+  for (name of professors.keys()) {
+    professors_names.push(name);
+  }
+  var output = "<ul class=\"collection\">";
+  for (sec of sections.keys()) {
+    var temp = [];
+    for (prof_name of professors_names) {
+      var prof_secs = professors.get(prof_name);
+      for (prof_sec of prof_secs) {
+        if (sec == prof_sec) {
+          temp.push(prof_name);
+        }
+      }
+    }
+    professor_sections.set(sec, temp);
+  }
+  var professors_names2 = [];
+  for (professor_section2 of professor_sections.keys()) {
+    professors_names2.push(professor_section2);
+  }
+  var output = "<ul class=\"collection\">";
+  for (ps of professors_names2) {
+    var names = professor_sections.get(ps);
+    output += "<li class=\"collection-item\">" + ps + " = " + names + "</li>";
+  }
+  output += "</ul>";
+  $("#professors").append(output);
+}
+
+
 
 //////////////////////////////////////////
 //****** OUTPUT FOR POSSIBILITIES *****//

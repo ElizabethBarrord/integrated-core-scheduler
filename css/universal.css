@@ -52,11 +52,10 @@ h4 {
     overflow: hidden;
 }
 
-
 /* columns */
 .column {
   float: left;
-  width: 33.33%;
+  width: 25%;
   padding: 10px;
   height: 300px;
 }
@@ -73,6 +72,11 @@ h4 {
   background-color: #000000;
 }
 
+#filename {
+   width: 400px;
+   font-size: 20px;
+}
+
 #main {
   padding: 100px;
   text-align: center;
@@ -81,10 +85,23 @@ h4 {
 #possibilities_title {
   text-align: center;
 }
+
+#professors {
+  text-align: left;
+}
+
 #assignments {
   text-align: center;
 }
 
-button {
+input {
   padding: 10px;
+}
+
+button{
+  padding: 10px;
+}
+
+h4 {
+  font-weight:normal;
 }
