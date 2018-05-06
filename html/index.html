@@ -1,66 +1,61 @@
+
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <title>FYIC SCHEDULER</title>
-  <link rel=stylesheet type=text/css href=../css/universal.css>
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  <!--Import jQuery before materialize.js-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
-  <script src="../js/assignments.js"></script>
-</head>
-
-<body>
-  <nav>
-    <div class=nav-wrapper>
-      <a href="index.html" class="brand-logo center">FYIC Scheduler</a>
-    </div>
-  </nav>
-  <div class=row>
-    <div class="col l4 m4 s6">
-      <input type="file" name="filename" id="filename" accept=".csv">
-    </div>
-  </div>
-  <hr/>
-  <div class="col"></div>
-  </div>
-  <div class=row>
-    <div class=column>
-      <h4 class=center>Rooms</h4>
-      </br>
-      </br>
-      <div class=center id=room></div>
-    </div>
-    <div class=column>
-      <h4 class=center>Possibilities</h4>
-      </br>
-      </br>
-      <div style="" class=center id=accord></div>
-    </div>
-    <div class=column>
-      <h4 class=center>Professors</h4>
-      </br>
-      </br>
-      <div class=center id=professors></div>
-    </div>
-    <div class=column>
-      <div class=center>
-        <h4>Assignments</h4>
-        <button id=generate_assignments class=center onclick="assign()">Generate Assignments</button>
-        <button onclick="download_CSV()">Download CSV</button>
+   <head>
+      <meta charset="utf-8">
+      <title>FYIC SCHEDULER</title>
+      <link rel=stylesheet type=text/css href=../css/universal.css>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+      <script src="../js/assignments.js"></script>
+   </head>
+   <body>
+      <nav>
+         <div class=nav-wrapper>
+            <a href="index.html" class="brand-logo center">FYIC Scheduler</a>
+         </div>
+      </nav>
+      <div class=row>
+         <div class="col l4 m4 s6">
+            <input type="file" name="filename" id="filename" accept=".csv">
+         </div>
       </div>
-      <div class=center id=assignments></div>
-    </div>
-    </row>
-  </div>
-</body>
-
+      <hr/>
+      <div class=row>
+         <div class=column>
+            <h4 class=center>Rooms</h4>
+            <br>
+            <br>
+            <div class=center id=room></div>
+         </div>
+         <div class=column>
+            <h4 class=center>Possibilities</h4>
+            <br>
+            <br>
+            <div style="" class=center id=accord></div>
+         </div>
+         <div class=column>
+            <h4 class=center>Professors</h4>
+            <br>
+            <br>
+            <div class=center id=professors></div>
+         </div>
+         <div class=column>
+            <div class=center>
+               <h4>Assignments</h4>
+               <button id=generate_assignments class=center onclick="assign()">Generate Assignments</button>
+               <button onclick="download_CSV()">Download CSV</button>
+            </div>
+            <div class=center id=assignments></div>
+         </div>
+      </div>
+   </body>
 </html>
