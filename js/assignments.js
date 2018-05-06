@@ -153,6 +153,7 @@ function list_rooms() {
 //** LIST Professors FOR REFERENCE ****//
 ////////////////////////////////////////
 // this is a function that writes the room into the html
+var csvout = [];
 function list_professors() {
   var professors_names = [];
   for (name of professors.keys()) {
@@ -170,19 +171,26 @@ function list_professors() {
       }
     }
     professor_sections.set(sec, temp);
+
   }
+          //console.log(professor_sections);
   var professors_names2 = [];
   for (professor_section2 of professor_sections.keys()) {
     professors_names2.push(professor_section2);
+      //console.log(professor_section2);
   }
   var output = "<ul class=\"collection\">";
   for (ps of professors_names2) {
     var names = professor_sections.get(ps);
     output += "<li class=\"collection-item\">" + ps + " = " + names + "</li>";
+    csvout.push(names);
+
   }
   output += "</ul>";
   $("#professors").append(output);
 }
+
+
 
 
 
@@ -316,8 +324,8 @@ function download_CSV() {
     newtime.push(splat[1])
   });
 
-  var newresults = zip(newkeys, newroom, newtime);
-
+  var newresults = zip(newkeys, newroom, newtime, csvout);
+console.log(newresults);
   arrayToCSV(newresults);
 }
 
@@ -326,9 +334,9 @@ function download_CSV() {
 //****** zip N arrays *******///
 ///////////////////////////////
 
-function zip(a, b, c) {
+function zip(a, b, c, d) {
   var arr = [];
-  for (var key in a) arr.push([a[key], b[key], c[key]]);
+  for (var key in a) arr.push([a[key], b[key], c[key], d[key]]);
   return arr;
 }
 
